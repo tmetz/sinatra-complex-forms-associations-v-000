@@ -11,9 +11,9 @@ class PetsController < ApplicationController
   end
 
   post '/pets' do
-    @pet = Pet.create(:name => params[:pet])
+    @pet = Pet.create(params[:pet])
     if !params[:pet][:owner].empty?
-      @pet.owner = Owner.create(:name => params[:pet][:owner])
+      @pet.owner = Owner.create(:name => params[:pet][:owner][:name])
     end
     redirect to "pets/#{@pet.id}"
   end
