@@ -34,6 +34,9 @@ class PetsController < ApplicationController
     else
       @pet.owner = Owner.find_by_id(params[:pet][:owner_id])
     end
+    if !params[:pet][:name].empty?
+      @pet.name = params[:pet][:name]
+    end
     @pet.save
     redirect to "pets/#{@pet.id}"
   end
